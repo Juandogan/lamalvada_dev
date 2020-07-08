@@ -1,0 +1,261 @@
+
+
+<div class="divFondo fondo">
+  
+  <br>
+
+<div style="margin-top:-12px">
+  <nav class="nav nav-pills  nav-fill mt-3" style="background-color:orange; color:rgb(27, 27, 27)" >
+    
+    <a class="nav-link nav-item" (click)="formEdit('pedidos')">Pedidos</a><a matBadge={{this.cantped}} matBadgePosition="before" matBadgeOverlap="false" matBadgeSize="small" matBadgeColor="warn"style="margin-top:10px" ></a>
+    <a class="nav-link nav-item" (click)="formEdit('listado')">Promos</a>
+    <a class="nav-link nav-item" (click)="formEdit('carta')">Carta</a>
+  
+    <!-- <a class="nav-link" (click)="formEdit('listado')">Promos</a>
+    <a class="nav-link" (click)="formEdit('carta')">Carta</a> -->
+    
+  </nav>
+</div>
+    <!-- <mat-fab class="m-1 mt-2 btn btn-warning btn-sm" (click)="formEdit('pedidos')">Pedidos</mat-fab>
+    <button class="m-1 mt-2 btn btn-warning btn-sm" (click)="formEdit('listado')">Promo</button>
+    <button class="m-1 mt-2 btn btn-warning btn-sm" (click)="formEdit('carta')">Carta</button>
+     -->
+    
+
+   <div [ngSwitch]="this.tipo3"  >         
+
+   
+      <div class=" mb-4" *ngSwitchCase="'listado'">
+          <form #productosForm1="ngForm" (ngSubmit)="agregarProductos(productosForm1)">
+        
+            <label for="formGroupExampleInput"></label>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="productosService.productoSeleccionado.nombre" class="form-control text-center"
+              autocomplete="off" id="formGroupExampleInput" placeholder="Nombre">
+         
+        
+          <div class="form-group">
+            <label for="formGroupExampleInput"></label>
+            <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="productosService.productoSeleccionado.descripcion"
+              class="form-control text-center" autocomplete="off" id="formGroupExampleInput" placeholder="Descripción">
+          </div>
+        
+          <div class="form-group">
+            <label for="formGroupExampleInput"></label>
+            <input type="text" name="imagen" #imagen="ngModel" [(ngModel)]="productosService.productoSeleccionado.imagen" class="form-control text-center"
+              autocomplete="off" id="formGroupExampleInput" placeholder="URL de Imagen">
+          </div>
+        
+          <div class="form-group">
+            <label for="formGroupExampleInput"></label>
+            <input type="text" name="precio" #precio="ngModel" [(ngModel)]="productosService.productoSeleccionado.precio" class="form-control text-center"
+              autocomplete="off" id="formGroupExampleInput" placeholder="Precio">
+          </div>
+        
+          <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="productosService.productoSeleccionado._id" class="form-control text-center"
+            autocomplete="off" id="formGroupExampleInput" placeholder="ID">
+        
+          <div class="form-group">
+            <label for="formGroupExampleInput"></label>
+            <input type="text" name="categoria" #categoria="ngModel" [(ngModel)]="productosService.productoSeleccionado.categoria" class="form-control text-center"
+              autocomplete="off" id="formGroupExampleInput" placeholder="Categoria">
+          </div>
+        
+          <div class="text-center mt-5">
+            <button class="btn btn-success mr-2" (click)="this.productosService.snack('Guardado!')">Guardar</button>
+            <button class="btn btn-success" (click)="limpiarForm(productosForm1)">Limpiar</button>
+          </div>
+        
+          </form>
+          </div>
+        
+    <div *ngSwitchCase="'listado'">
+                                <div *ngFor="let productos of productosService.productos |filter:'promos'">
+                                  <div class="card text-left" style="border:none">
+                                    <img class="card-img-top" src="{{productos.imagen}}" style="height: 400px;" onerror="this.src='../../../assets/logofondonegro.png';">
+                                    <div class="card-body" style="background-color: black; color:rgb(153, 126, 77)">
+                                      <small style="margin-top:10px; line-height:-20px"> Promo </small>
+                                      <h1 class="card-title title2" style="color:rgb(173, 162, 62)"> {{productos.nombre}}</h1>
+                                      <p class="card-text"> {{productos.descripcion}}</p>
+
+                                      <h2 class="text-right" style="margin-bottom:15px; font-size:30px!important"> ${{productos.precio}} </h2>
+
+                                      <div style="display:flex; justify-content:flex-end">
+                                        <div>
+                                          <button class="btn btn-danger " (click)="borrarProducto(productos)">Borrar</button>
+                                          <button class="btn btn-warning ml-2" (click)="formEdit('listado')" (click)="editarProductos(productos)">Editar </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+    </div> <!-- ngswch listado -->
+    
+    
+    <div class=" mb-4" *ngSwitchCase="'carta'">
+        <form #productosForm1="ngForm" (ngSubmit)="agregarProductos(productosForm1)">
+      
+          <label for="formGroupExampleInput"></label>
+          <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="productosService.productoSeleccionado.nombre" class="form-control text-center"
+            autocomplete="off" id="formGroupExampleInput" placeholder="Nombre">
+       
+      
+        <div class="form-group">
+          <label for="formGroupExampleInput"></label>
+          <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="productosService.productoSeleccionado.descripcion"
+            class="form-control text-center" autocomplete="off" id="formGroupExampleInput" placeholder="Descripción">
+        </div>
+      
+           
+        <div class="form-group">
+          <label for="formGroupExampleInput"></label>
+          <input type="text" name="precio" #precio="ngModel" [(ngModel)]="productosService.productoSeleccionado.precio" class="form-control text-center"
+            autocomplete="off" id="formGroupExampleInput" placeholder="Precio">
+        </div>
+      
+        <input type="hidden" name="_id" #id="ngModel" [(ngModel)]="productosService.productoSeleccionado._id" class="form-control text-center"
+          autocomplete="off" id="formGroupExampleInput" placeholder="ID">
+      
+        <div class="form-group">
+          <label for="formGroupExampleInput"></label>
+          <input type="text" name="categoria" #categoria="ngModel" [(ngModel)]="productosService.productoSeleccionado.categoria" class="form-control text-center"
+            autocomplete="off" id="formGroupExampleInput" placeholder="Categoria">
+        </div>
+      
+        <div class="text-center mt-5">
+          <button class="btn btn-success mr-2" (click)="this.productosService.snack('Guardado!')">Guardar</button>
+          <button class="btn btn-success" (click)="limpiarForm(productosForm1)">Limpiar</button>
+        </div>
+      
+        </form>
+       <br>
+  
+        <div *ngFor="let productos of productosService.productos |filter:'entradas'" class="mb-2">
+            <div class="card text-left" style="border:none">
+              <div class="card-body" style="background-color: black; color:rgb(153, 126, 77)">
+                <small style="margin-top:10px; line-height:-20px"> Carta </small>
+                <h1 class="card-title title2" style="color:rgb(173, 162, 62)"> {{productos.nombre}}</h1>
+                <p class="card-text"> {{productos.descripcion}}</p>
+
+                <h2 class="text-right" style="margin-bottom:15px; font-size:30px!important"> ${{productos.precio}} </h2>
+
+                <div style="display:flex; justify-content:flex-end">
+                  <div>
+                    <button class="btn btn-danger " (click)="borrarProducto(productos)">Borrar</button>
+                    <button class="btn btn-warning ml-2" (click)="formEdit('carta')" (click)="editarProductos(productos)">Editar </button>
+                  </div>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div> 
+          
+        <div class=" mb-4" *ngSwitchCase="'pedidos'">
+
+      <mat-accordion multi="true" displayMode="false" style="height: 600px;" >
+
+          <mat-expansion-panel *ngFor ="let ped of pedidos ; let d = index">
+          
+          <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">  
+                <mat-panel-title style="color:rgb(197, 197, 197)">              
+                                        <span><span class="badge badge-warning">#{{ped.orden}}</span>  -<span class="badge badge-dark">{{ped.fecha | date:' HH:mm'}} -</span>{{ped.direccion}}</span>        
+                                        <span class="badge badge-dark" style="color:rgb(201, 164, 0)">{{ped.estado}}</span>
+                </mat-panel-title>
+        
+             </mat-expansion-panel-header>
+             
+             <ng-template matExpansionPanelContent color="primary"> 
+                <table class=" fluid table  table-ligth text-center">
+                               
+                    <tbody style="width:20%">
+                    <tr>
+                        <th class="text-left" scope="row">Nombre</th>
+                        <td> {{ped.nombre}}</td>
+                    </tr>
+              
+                    <tr>
+                        <th class="text-left" scope="row"> Dirección</th>
+                        <td>{{ped.direccion}}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left" scope="row">Localidad</th>
+                        <td>{{ped.localidad}}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-left"  scope="row">Celular</th>
+                        <td colspan="3">{{ped.cel}} </td>
+                        
+                    </tr>
+                    <tr *ngIf="ped.statusPago">
+                      <th class="text-left"  scope="row">MercadoPago</th>
+                      <td colspan="3">{{ped.statusPago}} </td>
+                      
+                  </tr>
+              
+                    <div *ngIf="ped.diferida">
+                      
+                                  <th class="text-left"  scope="row">Entrega Diferida</th>
+                                  <td colspan="3"> {{ped.horaDif}} - {{ped.fechaDif}}</td>
+                                  
+                                  
+                      
+                         </div>
+                 
+                    </tbody>
+                    </table>
+                    <table class="table table-bordered table-dark text-left">
+                  <thead>
+                         
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <th scope="col">Descripción</th>
+                              <th class="text-center" scope="col">Precio</th>
+                              
+                              </tr>
+                                
+                        <tr class="text-center" *ngFor ="let ped1 of ped| keys; let i = index" >
+                             <td class="text-left"> {{ped1.nombre}}</td>
+                             <td class="text-center">$ {{ped1.precio}}</td>
+                             
+                             
+                       
+                       </tr>
+              
+                      <tr>
+                              <th class="text-right"scope="col">TOTAL</th>
+                              <td class="text-center">${{ped.total}}</td>
+                      </tr>
+                      </tbody>
+                </table>
+                <div  style="float:right">
+                <h6 class="text-right " style="margin-top:-10px" >Seleccione estado de la Orden:</h6>
+                <button class="btn btn-danger" >Borrar</button>
+                <button class="btn btn-primary"(click)=" ped.estado='cocina'" (click)="cambiarEstado('Cocina', d)">Cocina</button>
+                <button class="btn btn-warning" (click)=" ped.estado='Delivery'  "(click)="cambiarEstado('Delivery', d)" >Delivery</button>
+                <button class="btn btn-success" (click)=" ped.estado='Entregado' "(click)="cambiarEstado('Entregado', d)">Entregado</button>
+              </div>
+              
+            </ng-template>
+            
+          </mat-expansion-panel>
+        </mat-accordion>
+
+
+ 
+
+</div>
+</div> <!--  div inicio ngSwich-->
+
+
+
+</div> <!-- ultimo div -->
+
+<br>
+<br><br><br>
+
+
+
+
+

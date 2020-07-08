@@ -1,0 +1,59 @@
+
+
+
+
+<div class="fondo" style="height: 100%; width: 100%; margin-top:135px;" *ngIf="this.loading">
+<div style="height: 100%; width: 100%">
+<img src="../../../assets/loading.gif" alt="">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</div>
+
+</div>
+<div class="fluid divFondo" >                  
+            <!-- para no aplicar magin-top y que quede en todas las tarjetas -->
+            <div class="row ">
+                <div *ngFor ="let productos of productosService.productos |filter:'promo' ; let ind = index" class="mt-5 col-sm-3 text-left ">
+                            <!-- [@aniCard]="estadoAnima" -->
+                    <div class="card " >
+                          <img class="card-img-top" src="{{productos.imagen}}" onerror="this.src='../../../assets/logofondonegro.png';" >                               
+                          <div class="card-body">
+                          <small style="margin-top:10px; line-height:-20px"> Promo </small>
+                          <h1 class="card-title tituloPromo" >       {{productos.nombre}}</h1>                          
+                          <p class="card-text" >                    {{productos.descripcion}}</p>
+                         
+                          
+                          <div style="display:flex; justify-content:flex-end"> 
+                      
+                        
+             <a (click)="this.productosService.obtenerUno(productos._id, productos)" (click)="this.service.enviaContadorNavbar(false)" (click)="this.productosService.guardarStorage(productos)"
+                         ><span class="sombra " style="color:rgb(253, 193, 7); margin-top:15px; padding-left:12px; padding-right: 12px "class="material-icons active">add_circle</span></a> 
+                           <h2  class="text-right arm" style="margin-top:11px; font-size:30px!important">  ${{productos.precio}} </h2>                                                       
+                      </div> 
+                      
+            
+<!-- Controles de Agregar quitar carrito -->
+                <!-- <div class="text-left ">
+                      <h6 class="badge badge-warning" (click)="this.productosService.obtenerUno(productos._id, productos)" 
+                                                      (click)="this.productosService.guardarStorage(productos)">✛</h6>
+
+                      <span style="margin:15px">{{productos.cantidad}}</span>
+
+                      <h6 class="badge badge-warning"  (click)="this.eliminarItem(productos)"  
+                                                       (click)="this.productosService.restarUno(productos._id)">―</h6>                                                             
+                  
+                </div>                   -->
+<!-- ⠇
+                <div class="text-right">                                                
+                           <small style="color:rgb(107, 107, 107)">* Pedidos con 24hs de anticipación 15% OFF</small></div>                                                          
+                </div> -->
+
+           </div><!--Cierre de CARD   -->
+        </div><!--Cierre de FOR   -->
+      
+  </div>
+           
+</div>
+
+
+

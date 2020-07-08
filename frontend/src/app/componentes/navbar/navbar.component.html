@@ -1,0 +1,35 @@
+<div class="fixed-top contendorColor">
+  <img src="../../../assets/logofondonegro.png" alt="">
+
+  <!-- <a href="tel:+54-9-2291-51-9754">+1 (303) 499-7111</a> -->
+  <!-- <div class ="text-right"style="float:right; margin-right:7px; margin-top:10px;">
+         <a href="https://api.whatsapp.com/send?phone=5492291415593&text=Buenas%20noches,%20les%20queria%20hacer%20una%20consulta"><img src="../../../assets/whatapp.png" width="20%"alt=""> </a>
+         </div> -->
+
+  <!-- Menu -->
+  <div class="text-center fixed contenedorNavbar">
+
+    <ul style="margin-top:9px; padding:0%;">
+   
+      <li>
+        <a class="menuTexto" [routerLinkActive]="'activo'" [routerLinkActiveOptions]="{exact:  true}" routerLink="">⠇PROMOS</a>
+        <a class="menuTexto" [routerLinkActive]="'activo'" routerLink="carta">MENU</a>
+        <a class="menuTexto" routerLink ="productos" routerLinkActive="activo">⠇ADM</a>
+      </li>
+        <!-- <li>  -->
+
+        <!-- Carrito   -->
+        <div class="contenedorCarrito">
+          <a matBadge="{{contador}}" matBadgePosition="after" matBadgeOverlap="false" matBadgeSize="small" matBadgeColor="warn"
+            style="margin-top:-5px!important" routerLink="modulocompras" routerLinkActive="activo2">
+            <div [ngClass]="this.estadoCarrito ? 'opt1':'opt2'"></div>
+          </a>
+          <!-- <img class="mt-2 "src="../../../assets/carritotrue.jpg" width="45%" alt="" style="margin-right  :-10px"> -->
+
+        </div>
+
+
+    </ul>
+  </div>
+
+</div>

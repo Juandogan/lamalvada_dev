@@ -1,0 +1,14 @@
+
+.fondo{background-image: url('../../../assets/pizarron2.jpg');width: 100%;  object-fit: cover; }
+.divFondo{margin-top:134px; background-color: black;}
+.divContenedor{margin-left:15px;}
+.totalPie{margin-left: -30px;}
+.titulo{width: 600px!important; color: white;}
+.precio{width: 200px!important; color: white;}
+h6{font-size:12px;  color:goldenrod;}
+h4{font-size:40px; margin-top:-10px; color:white;}
+
+.blue-snackbar1{background-image:  url('../../../assets/carritocampanafalse.jpg');margin-top:50%!important; margin-left:36%!important; height: 123px; max-width:130px!important; background-color:rgb(214, 214, 0); color:black;}
+
+.op1{background-color: black}
+.op2{background-color: orange};

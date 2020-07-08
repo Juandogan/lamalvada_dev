@@ -1,0 +1,126 @@
+
+        
+<div [ngSwitch]=pantalla>               
+        <div  *ngSwitchCase="true">  
+                                <div class=" container" style="margin-top:120px ;color:wheat">
+    <br>
+    <div style="display: flex; justify-content: space-between">
+                                    <div  style="display:flex; color:wheat " class="mt-3 mb-2">
+                                            <h5 style="color:rgb(255, 255, 255);margin:2px">Datos de envío</h5>
+                                        </div>
+
+                                        <div  style="display:flex; color:wheat " class="mt-3 mb-2">                                                
+                                             <a style="color:gray"  routerLink="../formulario">   <span class="material-icons" >edit</span></a>
+                                                
+                                                
+                                            </div>
+
+  </div>                                        
+                                    <table class="table table-bordered table-dark text-center">
+                                        
+                                        <tbody style="width:20%">
+                                        <tr>
+                                            <th class="text-left" scope="row">Nombre</th>
+                                            <td> {{this.datos.nombre}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th class="text-left"  scope="row">Dirección</th>
+                                            <td>{{this.datos.direccion}} #{{this.datos.direccionNumero}} </td>
+
+                                            <td *ngIf="this.datos.direccionPiso">{{this.datos.direccionPiso}} "{{this.datos.direccionDpto}}" </td>
+                                             
+                                        </tr>
+                                        <tr>
+                                            <th class="text-left" scope="row">Localidad</th>
+                                            <td>{{this.datos.localidad}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-left"  scope="row">Celular</th>
+                                            <td colspan="3">{{this.datos.cel}}</td>
+                                            
+                                        </tr>
+                                 
+                                        <tr *ngIf ="datos.diferida">
+                                            <th class="text-left"  scope="row">Entrega Diferida</th>
+                                            <td colspan="3">Día:  {{this.datos.fechaDif |date:'dd/MM/yy'}} Hora:  {{this.datos.horaDif}}  </td>
+                                            
+                                        </tr>
+                                    
+                                        </tbody>
+                                    </table>
+                                    <div style="display: flex; justify-content: space-between">
+                                
+                                    <div  style="display:flex; color:wheat " class="mt-3 mb-2">
+                                  
+                                            <h5 style="color:rgb(255, 255, 255);margin:2px">Pedido</h5>
+                                        </div>
+                                        
+                                        <div  style="display:flex; color:wheat " class="mt-3 mb-2">                                                
+                                               <a style="color:gray" routerLink="../../modulocompras"> <span class="material-icons" >edit</span></a>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                <table class="table table-bordered table-dark ">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Descripción</th>
+                                            <th class="text-center" scope="col">Precio</th>
+                                            
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="text-center" *ngFor ="let carrito of pedidos">
+                                            <td class="text-left"> {{carrito.nombre}}</td>
+                                            <td> ${{carrito.precio}}</td>
+                                        </tr>
+
+                                        <tr>
+                                                <th class="text-right"scope="col">TOTAL</th>
+                                                <td class="text-center"> ${{this.productosService.total}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+
+    </div>
+    
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+      <div class="totalPie">
+            <div class="text-right" style="position : fixed; bottom:0px; background-color: black; width: 100%;" >
+                <div style="margin-right: 10px; margin-top:15px">
+                    <h4 style ="color:orange; margin-top:5; margin-bottom:5px">Seleccione medio de pago</h4>
+                        <button class="btn btn-success mr-2"  (click)='this.mercadoPago()'>Mercado Pago</button>
+
+                        <button routerLink='../comprasfin' class="btn btn-success ">Efectivo</button>               <br>
+                      <br>
+                    </div>
+            </div>
+        </div>
+
+<div>
+       
+        
+    </div>
+
+</div>
+<div  *ngSwitchCase="false">  
+
+
+        <div style="margin-top:135px;" >
+                <div  style="background-color: black; height: 1200px;" >
+                    <div style="margin-top:80px; margin-left:20px">
+                    <img src="../../../assets/loading.gif" alt="">
+                      <h2 style="color:wheat"> Redirigiendo a MERCADOPAGO</h2>
+                    </div>
+                    
+                    </div>
+            
+
+
+</div>
+
+</div>
+

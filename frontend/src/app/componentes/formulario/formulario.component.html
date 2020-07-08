@@ -1,0 +1,149 @@
+
+<div style="margin-top:135px;" >
+<form class="m-2" >
+        
+    
+<div style="display:flex; align-content: space-between;">
+                    
+  <div>                  
+      
+              <div  style="display:flex; color:rgb(255, 255, 255);" class="mt-2" >
+                  <span class="material-icons" >person_pin</span>
+                  <h5 style="color:rgb(255, 255, 255);">Nombre</h5><span *ngIf ="nombreForm.hasError('required') "
+                   style="color:rgb(177, 0, 0); margin-left: 5px">✽</span><span *ngIf ="nombreForm.value!" 
+                   style="color:rgb(0, 255, 0); margin-left: 5px">✔</span>                                                         
+              </div>
+                    <div class="input-group mb-3">
+                      
+                            <input [formControl]="nombreForm"  name="nombre" class="form-control text-center" 
+                            style="max-width:95%;margin-top:0px" autocomplete="off"  placeholder="Nombre" >
+
+                             
+                          </div>
+   </div>
+
+                
+  <div>                  
+      
+        <div  style="display:flex; color:rgb(255, 255, 255); " class="mt-2">
+            <span class="material-icons" >phone_android</span>
+            <h5 style="color:rgb(255, 255, 255)">Celular</h5>
+            <span *ngIf ="celForm.hasError('required') " style="color:rgb(177, 0, 0); margin-left: 5px">✽</span>
+            <span *ngIf ="celForm.value!" style="color:rgb(0, 255, 0); margin-left: 5px">✔</span>
+        </div>
+        <div class="input-group mb-3">
+                <input [formControl]="celForm"  type="tel" style="margin-top:-5px; max-width:70%; border-radius: 5px!important" class="form-control text-center"  autocomplete="on"
+                class="form-control text-center" style="max-width:98%" autocomplete="off" id="formGroupExampleInput" placeholder="Celular" >
+              </div>      
+        
+        
+</div>
+      
+
+
+</div>
+    <div class="form-group " style="color:white">                                                  
+                <div  style="display:flex; color:rgb(255, 255, 255); " class="mt-1 mb-2">
+                                <span class="material-icons" >place</span>
+                                <h5 style="color:rgb(255, 255, 255);margin:2px">Dirección</h5>
+                                <span *ngIf ="direccionForm.hasError('required') || direccionNumeroForm.hasError('required')" style="color:rgb(177, 0, 0); margin-left: 5px">✽</span>
+                                <span *ngIf ="direccionNumeroForm.value! && direccionForm.value!" style="color:rgb(0, 255, 0); margin-left: 5px">✔</span>
+                            </div>
+                            <div class="input-group">
+                                        <div class="input-group-prepend ">
+                                          
+                                        </div>
+                                        <div style="width: 45%" >
+                                        <input [formControl]="direccionForm" (focus)="topscroll()" (focusout)="focusOut()" type="text" class="form-control text-center" placeholder="Calle">
+                                          </div>
+                                          <div style="width: 25%">
+                                              
+                                        <input [formControl]="direccionNumeroForm" (focus)="topscroll()" (focusout)="focusOut()"  class="text-center" type="tel" class="form-control text-center" placeholder="Numero">
+                                                </div>
+                                        <input [formControl]="direccionPisoForm" (focus)="topscroll()" (focusout)="focusOut()"  class="text-center" type="tel" class="form-control text-center" placeholder="Piso">
+                                        <input [formControl]="direccionDptoForm"(focus)="topscroll()" (focusout)="focusOut()" class="text-center" type="text" class="form-control text-center"placeholder="Dpto">
+                                      </div>                     
+      
+      
+                    <!-- <div class="input-group mb-3" style="margin-top:-10px">
+            <input  name="direccion" #direccion="ngModel" [(ngModel)]="this.datosEntrega.direccion" type="text" 
+             class="form-control text-center" autocomplete="off" id="formGroupExampleInput" placeholder="Dirección" >
+         
+      </div> -->
+          </div>
+          <div class="form-group" style="margin-top:-35px">                                                  
+                  
+                        <label for="formGroupExampleInput"></label>
+                        <div  style="display:flex; color:rgb(255, 255, 255); " class="mt-3 mb-2">
+                                        <span class="material-icons" >place</span>
+                                        <h5 style="color:rgb(255, 255, 255);margin:2px">Localidad</h5>
+                                        <span *ngIf ="localidadForm.hasError('required') " style="color:rgb(177, 0, 0); margin-left: 5px">✽</span>
+                                        <span *ngIf ="localidadForm.value!" style="color:rgb(0, 255, 0); margin-left: 5px">✔</span>
+                                    </div>
+                          
+                                <div class="input-group mb-3">
+
+                                     
+                           <select [formControl]="localidadForm" (change)="focusOut()" style="width: 95% ; text-align-last: center;"  type="text" class="form-control" style="text-align-last: center!important" >      
+                                        
+                                        <option value="Olivos">Olivos</option>
+                                        <option value="Martinez">Martinez</option>
+                                        <option value="Florida">Florida</option>
+                                        <option value="La Lucila">La Lucila</option>
+                                        <option value="Acasuso">Acasuso</option>
+                                        <option value="San Isidro">San isidro</option>
+
+                                    </select>    
+                             
+          </div>
+                      </div>
+            
+
+<div  style="display:flex; margin-top:20px">
+  
+            <div class="form-check">
+                <input (change)="this.datosEntrega.diferida=false" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" checked>
+                <label class="form-check-label" style="color:wheat; margin-top:3px" for="exampleRadios1">
+                  Entrega Inmediata
+                </label>
+              </div>
+              <div class="form-check" style="margin-left:10px">
+                <input  class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" (click)="this.datosEntrega.diferida=true" >
+                <label style="color:wheat; margin-top:3px" class="form-check-label" for="exampleRadios2">
+                  Entrega diferida
+                </label>
+              </div>
+
+</div> 
+
+<div [ngSwitch]="this.datosEntrega.diferida" >               
+                <div  *ngSwitchCase="true">   
+                        <div class="m-1 " style=" display:flex; align-content: space-around;">
+                                
+                                <div >    
+                                        <h4 style="color:wheat; margin-top:10px; margin-bottom: 0px">Fecha</h4>                                            
+                                <!-- <span class="material-icons m-2" style="color:orange;">calendar_today </span>  -->
+                                <input [formControl]="fechaForm" style="margin-right:20px"type="date" name="fecha" value={{this.myDate}}  ></div>
+
+
+                                <div >
+                                <!-- <span class="material-icons m-2" style="color:orange;">alarm</span> -->
+                                 <h4 style="color:wheat; margin-bottom: 0px; margin-top:10px">Hora</h4>       
+                                <input [formControl]="horaForm" type="time" name="hora" value="21:00:00"  width="140px"></div>
+                        
+                        </div>
+                       </div>
+                </div>
+                
+                
+<br>
+<br>
+<div class="text-right container">
+<button [disabled]="nombreForm.invalid || celForm.invalid || direccionForm.invalid || direccionNumeroForm.invalid || localidadForm.invalid "  
+type="button" (click)="this.datosEnvio($event)" class="btn btn-warning mr-2 btn-block" routerLink='../mediosdepago'>CONFIRMAR</button>
+<br><br><br><br>               
+</div>
+<br>
+<br>
+</form>
+

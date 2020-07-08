@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Oxanium:wght@200&family=Patrick+Hand+SC&display=swap');
+
+
+.divFondo{margin-top:137px;}
+.fondocolor{background-color: black;}
+
+.fondo{background-image: url('../../../assets/pizarron2.jpg');width: 100%;  object-fit: cover; margin-top:112px;}
+input{background-color:rgba(0,0,0,0) !important;
+    ;background: tranparent!important; 
+    box-shadow: none; 
+    border-bottom: 2px solid  rgb(214, 214, 214); 
+    border-top:none; 
+    border-left: none; 
+    border-right: none;
+}
+    
+
+ 
+
+.title2{font-family: 'Annie Use Your Telescope', cursive;    
+           font-size:30px 
+}
+
+.title1{font-family: 'Oxanium', cursive;
+    font-size:19px 
+}

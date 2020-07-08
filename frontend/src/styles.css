@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap');
+.sombra{-webkit-box-shadow: 3px 6px 34px -17px rgb(27, 27, 27);
+    -moz-box-shadow: 3px 6px 34px -17px rgb(70, 70, 70);
+    box-shadow: 3px 6px 34px -17px rgb(0, 0, 0); 
+
+}
+
+.blue-snackbar{background-image:  url('../../frontend/src/assets/carritocampana.jpg'); margin-top:50%!important; margin-left:36%!important; height: 123px; max-width:130px!important; background-color:rgb(214, 214, 0); color:black;}
+
+.blue-snackbar1{background-image:  url('../../frontend/src/assets/carritocampanafalse.jpg');margin-top:50%!important; margin-left:36%!important; height: 123px; max-width:130px!important; background-color:rgb(214, 214, 0); color:black;}
+
+ 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.activo{color:yellow}

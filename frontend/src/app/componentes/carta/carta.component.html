@@ -1,0 +1,483 @@
+<br>
+<div class="divFondo">
+
+        <mat-accordion multi="true" displayMode="false" style="height: 600px;" >
+
+  <mat-expansion-panel>
+  
+  <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+
+        <mat-panel-title style="color:rgb(197, 197, 197)">
+             
+                                <span>Entradas</span>
+       
+        </mat-panel-title>
+
+     </mat-expansion-panel-header>
+     
+     <ng-template matExpansionPanelContent color="primary"> 
+     <table class="table table-ligth " style="padding: 0px!important;">
+            <tbody *ngFor ="let productos of productosService.productos |filter:'entrada'; let ind = index">
+                    <tr style="max-height:60px;">                                         
+                    <td style="width: 200px!important"  scope="row" >
+                        <div style="margin-top:5px;">
+                       <h2 style="font-size: 16px"> {{productos.nombre}}</h2>
+                  </div>  
+                    </td>   
+                    <div style="display:flex; justify-content:flex-end">
+                    <td> 
+      
+                          <div style="max-width:90px; min-width:80px; display: flex; justify-content: space-between; margin-top:10px;">
+                                    <a (click)='this.eliminarItem(productos)' 
+                                    (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7);"class="material-icons active">
+                                           remove_circle
+                                           </span></a>
+                                  
+                   
+                   <span style="margin-top:2px">{{productos.cantidad}}</span>
+                  
+                   <a (click)='productosService.obtenerUno(productos._id, productos)'
+                   (click)='this.service1.enviaContadorNavbar(false)'
+                   (click)='productosService.guardarStorage(productos)'>
+
+         <span style="color:rgb(253, 193, 7);"
+         class="material-icons active">add_circle</span></a>
+        
+                        </div>
+      
+                  </td>
+            
+                                                                             
+                    <td class="text-right ">
+                  <div style="margin-top:7px; min-width:60px">
+                        <h2>${{productos.precio}}</h2>
+                  </div>                     
+                  </td>
+            </div>                                                   
+                
+                </tr>
+                <tr>
+                     
+                 <td colspan="6">
+                      <div style="margin-top:-15px!important">
+                       <h5 >{{productos.descripcion}}</h5> 
+                  </div>
+                </td>
+                 </tr>
+                  
+                       
+                
+            </tbody>
+    </table>
+    </ng-template>
+     <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+      <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+            <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                    arrow_upward
+                </span> </a>
+          </mat-action-row> -->
+     
+    
+  </mat-expansion-panel>
+
+        
+  <mat-expansion-panel>
+  
+        <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+      
+              <mat-panel-title style="color:rgb(197, 197, 197)">
+                        <span>Carnes</span>
+              </mat-panel-title>
+      
+           </mat-expansion-panel-header>
+           
+           <ng-template matExpansionPanelContent> 
+           <table class="table table-ligth " style="padding: 0px; margin:0px">
+                        <tbody *ngFor ="let productos of productosService.productos |filter:'carnes'; let ind = index">
+                                        <tr style="max-height:60px;">                                         
+                                       
+                                        <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                        
+                                        <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                       (click)='productosService.guardarStorage(productos)'>
+                                       <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                       class="material-icons">add_circle</span></a></td>
+                                                                  
+                                        <div style="width: 38px; margin-top:4px"> 
+                                        <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                        </div>                    
+                                        <td > <a (click)='this.eliminarItem(productos)' 
+                                         (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                remove_circle
+                                                </span></a></td>                                                            
+                                        <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                    
+                                    
+                                    </tr>
+                                    <tr>
+                                     <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                     </tr>
+                                      
+                                           
+                                    
+                                </tbody>
+                    
+          </table>
+          </ng-template>
+          <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+            <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                  <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                          arrow_upward
+                      </span> </a>
+                </mat-action-row>
+           -->
+          
+        </mat-expansion-panel>
+      
+          
+      
+            
+  <mat-expansion-panel>
+  
+        <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+      
+              <mat-panel-title style="color:rgb(197, 197, 197)">
+                     <span>Guarniciones</span>
+              </mat-panel-title>
+      
+           </mat-expansion-panel-header>
+           
+           <ng-template matExpansionPanelContent> 
+           <table class="table table-ligth " style="padding: 0px; margin:0px">
+                        <tbody *ngFor ="let productos of productosService.productos |filter:'guarniciones'; let ind = index">
+                                        <tr style="max-height:60px;">                                         
+                                       
+                                        <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                        
+                                        <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                       (click)='productosService.guardarStorage(productos)'>
+                                       <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                       class="material-icons">add_circle</span></a></td>
+                                                                  
+                                        <div style="width: 38px; margin-top:4px"> 
+                                        <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                        </div>                    
+                                        <td > <a (click)='this.eliminarItem(productos)' 
+                                         (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                remove_circle
+                                                </span></a></td>                                                            
+                                        <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                    
+                                    
+                                    </tr>
+                                    <tr>
+                                     <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                     </tr>
+                                      
+                                           
+                                    
+                                </tbody>
+                    
+          </table>
+          </ng-template>
+          <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+            <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                  <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                          arrow_upward
+                      </span> </a>
+                </mat-action-row>
+           -->
+          
+        </mat-expansion-panel>
+      
+                      
+  <mat-expansion-panel>
+  
+        <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+      
+              <mat-panel-title style="color:rgb(197, 197, 197)">
+                     <span>Cocina</span>
+              </mat-panel-title>
+      
+           </mat-expansion-panel-header>
+           
+           <ng-template matExpansionPanelContent> 
+           <table class="table table-ligth " style="padding: 0px; margin:0px">
+                        <tbody *ngFor ="let productos of productosService.productos |filter:'cocina'; let ind = index">
+                                        <tr style="max-height:60px;">                                         
+                                       
+                                        <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                        
+                                        <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                       (click)='productosService.guardarStorage(productos)'>
+                                       <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                       class="material-icons">add_circle</span></a></td>
+                                                                  
+                                        <div style="width: 38px; margin-top:4px"> 
+                                        <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                        </div>                    
+                                        <td > <a (click)='this.eliminarItem(productos)' 
+                                         (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                remove_circle
+                                                </span></a></td>                                                            
+                                        <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                    
+                                    
+                                    </tr>
+                                    <tr>
+                                     <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                     </tr>
+                                      
+                                           
+                                    
+                                </tbody>
+                                    
+          </table>
+          </ng-template>
+          <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+            <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                  <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                          arrow_upward
+                      </span> </a>
+                </mat-action-row>
+           -->
+          
+        </mat-expansion-panel>
+      
+         
+                
+  <mat-expansion-panel>
+  
+        <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+      
+              <mat-panel-title style="color:rgb(197, 197, 197)">
+                     <span>Pastas</span>
+              </mat-panel-title>
+      
+           </mat-expansion-panel-header>
+           
+           <ng-template matExpansionPanelContent> 
+           <table class="table table-ligth " style="padding: 0px; margin:0px">
+                        <tbody *ngFor ="let productos of productosService.productos |filter:'pastas'; let ind = index">
+                                        <tr style="max-height:60px;">                                         
+                                       
+                                        <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                        
+                                        <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                       (click)='productosService.guardarStorage(productos)'>
+                                       <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                       class="material-icons">add_circle</span></a></td>
+                                                                  
+                                        <div style="width: 38px; margin-top:4px"> 
+                                        <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                        </div>                    
+                                        <td > <a (click)='this.eliminarItem(productos)' 
+                                         (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                remove_circle
+                                                </span></a></td>                                                            
+                                        <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                    
+                                    
+                                    </tr>
+                                    <tr>
+                                     <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                     </tr>
+                                      
+                                           
+                                    
+                                </tbody>
+                    
+          </table>
+          </ng-template>
+          <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+            <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                  <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                          arrow_upward
+                      </span> </a>
+                </mat-action-row>
+           -->
+          
+        </mat-expansion-panel>
+      
+          
+                
+        <mat-expansion-panel>
+  
+                <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+              
+                      <mat-panel-title style="color:rgb(197, 197, 197)">
+                             <span>Salsas</span>
+                      </mat-panel-title>
+              
+                   </mat-expansion-panel-header>
+                   
+                   <ng-template matExpansionPanelContent> 
+                   <table class="table table-ligth " style="padding: 0px; margin:0px">
+                                <tbody *ngFor ="let productos of productosService.productos |filter:'salsas'; let ind = index">
+                                                <tr style="max-height:60px;">                                         
+                                               
+                                                <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                                
+                                                <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                               (click)='productosService.guardarStorage(productos)'>
+                                               <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                               class="material-icons">add_circle</span></a></td>
+                                                                          
+                                                <div style="width: 38px; margin-top:4px"> 
+                                                <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                                </div>                    
+                                                <td > <a (click)='this.eliminarItem(productos)' 
+                                                 (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                        remove_circle
+                                                        </span></a></td>                                                            
+                                                <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                            
+                                            
+                                            </tr>
+                                            <tr>
+                                             <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                             </tr>
+                                              
+                                                   
+                                            
+                                        </tbody>
+                            
+                  </table>
+                  </ng-template>
+                  <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+                    <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                          <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                                  arrow_upward
+                              </span> </a>
+                        </mat-action-row>
+                   -->
+                  
+                </mat-expansion-panel>
+              
+               
+              
+                <mat-expansion-panel>
+  
+                        <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+                      
+                              <mat-panel-title style="color:rgb(197, 197, 197)">
+                                     <span>Bebidas</span>
+                              </mat-panel-title>
+                      
+                           </mat-expansion-panel-header>
+                           
+                           <ng-template matExpansionPanelContent> 
+                           <table class="table table-ligth " style="padding: 0px; margin:0px">
+                                        <tbody *ngFor ="let productos of productosService.productos |filter:'bebidas'; let ind = index">
+                                                        <tr style="max-height:60px;">                                         
+                                                       
+                                                        <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                                        
+                                                        <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                                       (click)='productosService.guardarStorage(productos)'>
+                                                       <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                                       class="material-icons">add_circle</span></a></td>
+                                                                                  
+                                                        <div style="width: 38px; margin-top:4px"> 
+                                                        <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                                        </div>                    
+                                                        <td > <a (click)='this.eliminarItem(productos)' 
+                                                         (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                                remove_circle
+                                                                </span></a></td>                                                            
+                                                        <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                                    
+                                                    
+                                                    </tr>
+                                                    <tr>
+                                                     <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                                     </tr>
+                                                      
+                                                           
+                                                    
+                                                </tbody>
+                                    
+                          </table>
+                          </ng-template>
+                          <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+                            <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                                  <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                                          arrow_upward
+                                      </span> </a>
+                                </mat-action-row>
+                           -->
+                          
+                        </mat-expansion-panel>
+                      
+                       
+        
+                      
+                        <mat-expansion-panel>
+  
+                                <mat-expansion-panel-header style="background-color: rgb(56, 56, 56)">
+                              
+                                      <mat-panel-title style="color:rgb(197, 197, 197)">
+                                             <span>Vinos</span>
+                                      </mat-panel-title>
+                              
+                                   </mat-expansion-panel-header>
+                                   
+                                   <ng-template matExpansionPanelContent> 
+                                   <table class="table table-ligth " style="padding: 0px; margin:0px">
+                                                <tbody *ngFor ="let productos of productosService.productos |filter:'vinos'; let ind = index">
+                                                                <tr style="max-height:60px;">                                         
+                                                               
+                                                                <td  style="width:1000px; padding: 0px; margin-left:-10px; padding-top:17px; margin-top:0px" scope="row" ><h4>{{productos.nombre}}</h4></td>   
+                                                                
+                                                                <td style="padding-top:-5px"> <a (click)='productosService.obtenerUno(productos._id, productos)'(click)='this.service1.enviaContadorNavbar(false)'
+                                                               (click)='productosService.guardarStorage(productos)'>
+                                                               <span style="color:rgb(253, 193, 7);margin-left:10px!important; padding:3px!important"
+                                                               class="material-icons">add_circle</span></a></td>
+                                                                                          
+                                                                <div style="width: 38px; margin-top:4px"> 
+                                                                <td ><span>{{productos.cantidad}}</span></td>                                                      
+                                                                </div>                    
+                                                                <td > <a (click)='this.eliminarItem(productos)' 
+                                                                 (click)='productosService.restarUno(productos._id)'><span style="color:rgb(253, 193, 7); padding:1px"class="material-icons">
+                                                                        remove_circle
+                                                                        </span></a></td>                                                            
+                                                                <td class="text-right"><h2>${{productos.precio}}</h2></td>
+                                                            
+                                                            
+                                                            </tr>
+                                                            <tr>
+                                                             <td style="padding:5px!important"colspan="6"><h5 style="margin-top:-25px!important; margin-left:-5px" >{{productos.descripcion}}</h5> </td>
+                                                             </tr>
+                                                              
+                                                                   
+                                                            
+                                                        </tbody>
+                                            
+                                   </table>
+                                  </ng-template>
+                                  <!-- <mat-action-row style="background-color: rgb(212, 212, 212)">
+                                    <span (click)="cerrar()" style="margin-top:5px">Cerrar esta Categoría</span>
+                                          <a (click)="cerrar()"><span style="margin-right:8px"class="material-icons">
+                                                  arrow_upward
+                                              </span> </a>
+                                        </mat-action-row>
+                                   -->
+                                  
+                                </mat-expansion-panel>
+                              
+                               
+         
+                
+                
+        
+
+
+
+</mat-accordion>        
+
+<!-- <h1 [ngClass]="this.fondo ? 'op1':'op2' ">Hola: {{fondo}}</h1>      
+<button (click)="productosService.enviarMensaje2(true)">Dale botonete papa</button>               -->
+<br>
+<br><br><br><br>
+
+</div>
